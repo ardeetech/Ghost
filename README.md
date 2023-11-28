@@ -1,3 +1,4 @@
+This forked repository will be use to build your own docker image for ignoring force SSQL.
 &nbsp;
 <p align="center">
   <a href="https://ghost.org/#gh-light-mode-only" target="_blank">
