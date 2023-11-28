@@ -145,9 +145,9 @@ module.exports = {
                 logging.error(err);
             });
         }
-
+        const isSSL = false
         module.exports.ssr = MembersSSR({
-            cookieSecure: urlUtils.isSSL(urlUtils.getSiteUrl()),
+            cookieSecure: isSSL,
             cookieKeys: [settingsCache.get('theme_session_secret')],
             cookieName: 'ghost-members-ssr',
             getMembersApi: () => module.exports.api

@@ -52,9 +52,9 @@ _private.getAdminRedirectUrl = ({requestedHost, requestedUrl, queryParameters, s
             query: queryParameters
         });
     }
-
+    const isSSL = false
     // CASE: configured admin url is HTTPS, but request is HTTP
-    if (urlUtils.isSSL(adminUrl) && !secure) {
+    if (isSSL && !secure) {
         debug('redirect because protocol does not match');
 
         return _private.redirectUrl({
@@ -76,7 +76,8 @@ _private.getFrontendRedirectUrl = ({requestedHost, requestedUrl, queryParameters
     debug('getFrontendRedirectUrl', requestedHost, requestedUrl, siteUrl);
 
     // CASE: configured canonical url is HTTPS, but request is HTTP, redirect to requested host + SSL
-    if (urlUtils.isSSL(siteUrl) && !secure) {
+    const isSSL = false
+    if (isSSL && !secure) {
         debug('redirect because protocol does not match');
 
         return _private.redirectUrl({

@@ -50,13 +50,14 @@ const privateBlogging = {
         }
 
         res.isPrivateBlog = true;
-
+        // isSSL = urlUtils.isSSL(config.get('url'))
+        const isSSL = false
         return session({
             name: 'ghost-private',
             maxAge: constants.ONE_MONTH_MS,
             signed: false,
-            sameSite: urlUtils.isSSL(config.get('url')) ? 'none' : 'lax',
-            secure: urlUtils.isSSL(config.get('url'))
+            sameSite: isSSL ? 'none' : 'lax',
+            secure: isSSL
         })(req, res, next);
     },
 

@@ -13,6 +13,7 @@ let unoExpressSessionMiddleware;
 
 function getExpressSessionMiddleware() {
     if (!unoExpressSessionMiddleware) {
+        const isSSL = false
         unoExpressSessionMiddleware = session({
             store: sessionStore,
             secret: settingsCache.get('admin_session_secret'),
@@ -23,8 +24,8 @@ function getExpressSessionMiddleware() {
                 maxAge: constants.SIX_MONTH_MS,
                 httpOnly: true,
                 path: urlUtils.getSubdir() + '/ghost',
-                sameSite: urlUtils.isSSL(config.get('url')) ? 'none' : 'lax',
-                secure: urlUtils.isSSL(config.get('url'))
+                sameSite: isSSL ? 'none' : 'lax',
+                secure: isSSL
             }
         });
     }
